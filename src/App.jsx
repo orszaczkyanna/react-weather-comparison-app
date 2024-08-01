@@ -1,7 +1,15 @@
 import { useState } from "react";
 import WeatherCard from "./WeatherCard";
+import getFormattedData from "./weatherService";
 
 function App() {
+  async function getWeather() {
+    await getFormattedData({ q: "london", units: "metric" }).then((data) =>
+      console.log(data)
+    );
+  }
+  getWeather();
+
   const [cards, setCards] = useState([
     { id: generateCardId() },
     { id: generateCardId() },
