@@ -4,6 +4,9 @@ import CurrentWeather from "./components/CurrentWeather";
 import Forecast from "./components/Forecast";
 import getFormattedData from "./weatherService";
 
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 function WeatherCard({ removeCard, initialCity, initialUnits }) {
   const [weather, setWeather] = useState(null);
   const [query, setQuery] = useState({ q: initialCity });
@@ -21,6 +24,7 @@ function WeatherCard({ removeCard, initialCity, initialUnits }) {
     } catch (err) {
       console.error("Error fetching weather data:", err);
       setWeather(null);
+      toast.error("Unable to get data");
     }
   }
 

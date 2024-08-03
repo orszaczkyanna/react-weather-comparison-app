@@ -1,6 +1,9 @@
 import { useState } from "react";
 import WeatherCard from "./WeatherCard";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 function App() {
   const [cards, setCards] = useState([
     { id: generateCardId(), city: "London", units: "metric" },
@@ -32,10 +35,18 @@ function App() {
             removeCard={() => removeCard(card.id)}
           />
         ))}
-        <button onClick={addCard} className="btn-add-card">
-          +
-        </button>
+        <div className="add-card-button-container">
+          <button onClick={addCard} className="btn-add-card">
+            +
+          </button>
+        </div>
       </div>
+      <ToastContainer
+        autoClose={2500}
+        theme="colored"
+        pauseOnHover
+        position="top-center"
+      />
     </>
   );
 }

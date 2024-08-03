@@ -30,7 +30,7 @@ p {
 .container {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: stretch;
 }
 
 .btn-add-card {
@@ -47,6 +47,12 @@ p {
 .btn-add-card:hover {
   background-color: #dddddd;
   color: #077692;
+}
+
+.add-card-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ----------- WeatherCard ----------- */
