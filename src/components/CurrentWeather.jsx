@@ -1,35 +1,45 @@
-import { useState } from "react";
 import { BiSolidDropletHalf } from "react-icons/bi";
 import { FiWind } from "react-icons/fi";
 
-function CurrentWeather() {
+function CurrentWeather({
+  weather: {
+    cityName,
+    country,
+    formattedLocalDate,
+    formattedLocalTime,
+    weatherDescr,
+    icon,
+    temp,
+    humidity,
+    windSpeed,
+  },
+  units,
+}) {
   const horizontalDetails = [
     {
       id: 1,
       Icon: BiSolidDropletHalf,
       title: "Humidity",
-      data: "75%",
+      data: `${humidity}%`,
     },
     {
       id: 2,
       Icon: FiWind,
       title: "Wind Speed",
-      data: "3 m/s",
+      data: `${windSpeed.toFixed()} ${units === "metric" ? "m/s" : "mph"}`,
     },
   ];
 
   return (
     <div className="current-weather-container">
-      <h1>London, GB</h1>
-      <p className="current-date">Thursday, 01 Aug 2024</p>
-      <p className="current-time">Local time: 13:17</p>
-      <img
-        src="https://openweathermap.org/img/wn/01d@2x.png"
-        alt="weather icon"
-        className="current-weather-icon"
-      />
-      <p className="current-weather-temp">19°</p>
-      <p className="current-weather-description">Clouds</p>
+      <h1>
+        {cityName}, {country}
+      </h1>
+      <p className="current-date">{formattedLocalDate}</p>
+      <p className="current-time">Local time: {formattedLocalTime}</p>
+      <img src={icon} alt="weather icon" className="current-weather-icon" />
+      <p className="current-weather-temp">{temp.toFixed()}°</p>
+      <p className="current-weather-description">{weatherDescr}</p>
 
       <div className="current-weather-details">
         {horizontalDetails.map((detail) => (

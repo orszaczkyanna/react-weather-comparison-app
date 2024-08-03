@@ -74,14 +74,15 @@ function formatCurrentWeather(data) {
 
 // Format forecast data to provide daily data
 function formatForecastWeather(data, offset, secs) {
-  const currentDay = formatToLocalTime(secs, offset, "dd");
+  // const currentDay = formatToLocalTime(secs, offset, "dd");
 
   const dailyForecast = data
-    .filter((d) => {
-      // forecast at 9 a.m
-      const forecastDay = d.dt_txt.slice(8, 10); // d.dt_txt: 2024-08-03 09:00:00
-      return d.dt_txt.slice(-8) === "09:00:00" && forecastDay !== currentDay;
-    })
+    // .filter((d) => {
+    //   // forecast at 9 a.m
+    //   const forecastDay = d.dt_txt.slice(8, 10); // d.dt_txt: 2024-08-03 09:00:00
+    //   return d.dt_txt.slice(-8) === "09:00:00" && forecastDay !== currentDay;
+    // })
+    .filter((d) => d.dt_txt.slice(-8) === "09:00:00") // forecast at 9 a.m
     .slice(0, 5)
     .map((d) => ({
       temp: d.main.temp,

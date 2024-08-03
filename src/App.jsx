@@ -1,23 +1,15 @@
 import { useState } from "react";
 import WeatherCard from "./WeatherCard";
-import getFormattedData from "./weatherService";
 
 function App() {
-  async function getWeather() {
-    await getFormattedData({ q: "london", units: "metric" }).then((data) =>
-      console.log(data)
-    );
-  }
-  getWeather();
-
   const [cards, setCards] = useState([
-    { id: generateCardId() },
-    { id: generateCardId() },
-    { id: generateCardId() },
+    { id: generateCardId(), city: "London", units: "metric" },
+    { id: generateCardId(), city: "Washington", units: "imperial" },
+    { id: generateCardId(), city: "Berlin", units: "metric" },
   ]);
 
   function addCard() {
-    const newCard = { id: generateCardId() };
+    const newCard = { id: generateCardId(), city: "London", units: "metric" };
     setCards([...cards, newCard]);
   }
 
@@ -35,7 +27,8 @@ function App() {
         {cards.map((card) => (
           <WeatherCard
             key={card.id}
-            id={card.id}
+            initialCity={card.city}
+            initialUnits={card.units}
             removeCard={() => removeCard(card.id)}
           />
         ))}
