@@ -36,7 +36,7 @@ function CurrentWeather({
         {cityName}, {country}
       </h1>
       <p className="current-date">{formattedLocalDate}</p>
-      <p className="current-time">Local time: {formattedLocalTime}</p>
+      <p className="current-time">Local fetch time: {formattedLocalTime}</p>
       <img src={icon} alt="weather icon" className="current-weather-icon" />
       <p className="current-weather-temp">{temp.toFixed()}°</p>
       <p className="current-weather-description">{weatherDescr}</p>

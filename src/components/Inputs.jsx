@@ -9,7 +9,7 @@ function Inputs({ initialUnits, setQuery, setUnits }) {
     if (inputCity !== "") setQuery({ q: inputCity });
   }
 
-  function handleEnterDown(e) {
+  function handleEnterDownSearch(e) {
     if (e.key === "Enter") {
       handleSearchClick();
     }
@@ -38,20 +38,24 @@ function Inputs({ initialUnits, setQuery, setUnits }) {
         type="text"
         value={inputCity}
         onChange={(e) => setInputCity(e.target.value)}
-        onKeyDown={handleEnterDown}
+        onKeyDown={handleEnterDownSearch}
         placeholder="Enter city..."
       />
 
       <BiSearch
         onClick={handleSearchClick}
+        onKeyDown={handleEnterDownSearch}
         size={25}
         tabIndex={0} // Places the element in the default tab order
+        role="button"
         className="search-icon"
       />
       <BiCurrentLocation
         onClick={handleLocationClick}
+        onKeyDown={(e) => e.key === "Enter" && handleLocationClick()}
         size={25}
         tabIndex={0}
+        role="button"
         className="search-icon"
       />
 

@@ -29,6 +29,14 @@ button:focus,
   outline: none;
 }
 
+/* apply when receives keyboard focus */
+input:focus-visible,
+select:focus-visible,
+button:focus-visible,
+.search-icon:focus-visible {
+  outline: 2px solid #badaff;
+}
+
 p {
   margin: 0.1rem;
 }
@@ -112,6 +120,8 @@ p {
 
 .search-icon {
   margin-right: 8px;
+  padding: 3px;
+  border-radius: 3px;
   cursor: pointer;
   transition: transform 0.2s ease-out;
 }
